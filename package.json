@@ -4,6 +4,8 @@
   "description": "Passing events between nodes using a cluster of Node.JS and Socket.io",
   "main": "server.js",
   "scripts": {
+    "build": "./node_modules/.bin/babel ./server.js --out-dir ./dist --ignore ./dist --ignore ./node_modules",
+    "start": "babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,7 +25,15 @@
   "homepage": "https://github.com/Dev-Wito/Cluster-Socket.io#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "http": "0.0.0",
+    "path": "^0.12.7",
     "socket.io": "^2.2.0",
     "socket.io-redis": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.0.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0"
   }
 }
