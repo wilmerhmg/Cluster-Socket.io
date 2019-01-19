@@ -36,17 +36,18 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
   $(function () {
-    var socket = io('http://localhost:3081', {
+
+    var socket = io(`${location.protocol}//${location.host}`, {
       transports: ['websocket']
     });
+
     socket.on('news', function (data) {
-      $("#txtArea").append(data.text);
-      $("#txtArea").append(`\n---------------------------------\n`);
+      $(`#txtArea`).append(data.text)
+                   .append(`\n---------------------------------\n`);
     });
 
     $("#btnSend").on('click', function (e) {
-      socket.emit('PublicRoom', {text: $("#txtSend").val()});
-      $("#txtSend").val("");
+      socket.emit('PublicRoom', {text: $("#txtSend").val().val("")});
     });
 
   });
