@@ -47,7 +47,8 @@
     });
 
     $("#btnSend").on('click', function (e) {
-      socket.emit('PublicRoom', {text: $("#txtSend").val().val("")});
+      socket.emit('PublicRoom', {text: $("#txtSend").val()});
+      $(this).val("");
     });
 
   });
